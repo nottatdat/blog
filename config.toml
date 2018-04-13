@@ -2,6 +2,14 @@ baseURL = "http://tatd.at/"
 languageCode = "en-us"
 title = "dat"
 theme = "hugo-xmin"
+googleAnalytics = "UA-117499837-1"
+
+pygmentsUseClasses=true
+
+[[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
 
 [params]
     description = "A website built through Hugo and blogdown."
