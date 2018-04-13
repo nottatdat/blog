@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Problem-solvings on dat</title>
+    <link>http://tatd.at/problem-solving/</link>
+    <description>Recent content in Problem-solvings on dat</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="http://tatd.at/problem-solving/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Go, Gopher!</title>
+      <link>http://tatd.at/problem-solving/2018-04-11-go-gopher/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://tatd.at/problem-solving/2018-04-11-go-gopher/</guid>
+      <description>Go, Gopher! là một bài toán không khó, nhưng khá thú vị ở mặt problem setting. Nội dung của nó như sau:
+ Cho một bảng 2D có kích thước 1000 x 1000 và hai số tự nhiên A, n cho trước.
+ Các ô trên bảng có hai trạng thái là bật và tắt. Ban đầu, tất cả các ô đều đang ở trạng thái tắt.
+ Ở mỗi lần deploy gopher vào ô (i, j), một ô nằm trong block 3x3 có ô (i, j) là trung tâm sẽ được chọn với phân phối đều và được chuyển sang trạng thái bật (nếu đang tắt) hoặc giữ nguyên trạng thái nếu đang bật.</description>
+    </item>
+    
+  </channel>
+</rss>
