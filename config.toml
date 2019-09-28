@@ -1,4 +1,4 @@
-baseURL = "http://tatd.at/"
+baseURL = "https://tatd.at/"
 languageCode = "en-us"
 title = "dat"
 theme = "hugo-xmin"
@@ -13,4 +13,4 @@ pygmentsUseClasses=true
 
 [params]
     description = "A website built through Hugo and blogdown."
-    footer = "&copy; [dat](http://tatd.at) 2018 | [Github](https://github.com/taurandat) | [Linkedin](https://www.linkedin.com/in/trantatdat/)"
+    footer = "&copy; [dat](http://tatd.at) 2018-2019 | [Github](https://github.com/tataudat) | [Linkedin](https://www.linkedin.com/in/trantatdat/)"
