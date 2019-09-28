@@ -72,9 +72,9 @@ Xem phần trước tại [đây](https://tatd.at/machine-learning/2019-09-25-ta
 
     **Ngoài lề**: Cũng từ những nghiên cứu về *"Adversarial Examples"*, Ian Goodfellow đã trở thành một trong số những người tiên phong, mở ra *một hướng nghiên cứu mới* trong Machine learning hiện đại, đó chính là **[Generative Adversarial Network](https://papers.nips.cc/paper/5423-generative-adversarial-nets.pdf)**.
 
-* **Trang 18**: Phần này lấy ý tưởng rất nhiều từ bài viết **[Neural Networks, Manifolds, and Topology](https://colah.github.io/posts/2014-03-NN-Manifolds-Topology/)** của Christopher Colah. Ảnh minh hoạ cũng được lấy từ bài viết trên.
+* **Trang 18**: Ảnh và ý tưởng cho phần này được lấy từ bài viết **[Neural Networks, Manifolds, and Topology](https://colah.github.io/posts/2014-03-NN-Manifolds-Topology/)** của Christopher Colah.
 
-    Để hiểu được vì sao *Deep learning* lại dễ *"overfitting"* như vậy, ta phải hiểu được việc huấn luyện một mạng neuron diễn ra như thế nào. Dưới đây là hai ví dụ đơn giản, giúp ta nhìn thấy (một phần) trong bức tranh tổng thể của việc huấn luyện một mạng neuron.
+    Để hiểu được vì sao *Deep learning* dễ *"overfitting"* như vậy, ta phải hiểu được việc huấn luyện một mạng neuron diễn ra như thế nào. Dưới đây là hai ví dụ đơn giản, giúp ta nhìn thấy (một phần) trong bức tranh tổng thể của việc huấn luyện một mạng neuron.
 
     <img src="https://colah.github.io/posts/2014-03-NN-Manifolds-Topology/img/spiral.1-2.2-2-2-2-2-2.gif" style="width:350px;"/> <img src="https://colah.github.io/posts/2014-03-NN-Manifolds-Topology/img/topology_1D-2D_train.gif" style="width:350px;"/>
 
@@ -84,7 +84,7 @@ Xem phần trước tại [đây](https://tatd.at/machine-learning/2019-09-25-ta
 
     Tuy nhiên, vấn đề cũng đến từ đây: Việc sử dụng một layer cuối *khá đơn giản* như *logistic* hay *softmax*, dẫn đến việc **rất dễ thay đổi kết quả của mô hình**, nếu như ta có thể *chỉnh sửa được dữ liệu đầu vào*. Tức là với các điểm dự đoán nằm gần *decision boundary*, ta sẽ có cách thay đổi dữ liệu đầu vào, sao cho về mặt ý nghĩa thì bản chất của dữ liệu không thay đổi, như trong hình chú gấu trúc, mà lại có thể làm "xê dịch" dự đoán mới sang một *decision region* khác, hoặc *"cực đoan"* hơn, như trong bài báo mới đây, chỉ cần *thay đổi 1 pixel duy nhất*.
 
-    Vậy tại sao ta không dùng một hàm số phức tạp/có ý nghĩa hơn cho lớp cuối của mô hình? Lý do mà các hàm như *logistic* hay *softmax* được chọn là: Khi áp dụng các phương pháp tối ưu cho mạng neuron, với lượng dữ liệu lớn, một chiến thuật rất hay được sử dụng là huấn luyện theo từng batch nhỏ, và việc tính sai số đối với các hàm số kể trên nhìn chung là đơn giản. Như đề xuất của Colah, một ý tưởng tự nhiên là: Thay vì sử dụng các hàm số kể trên, ta có thể sử dụng phương pháp **k-nearest neighbors** (*kNN*) ở lớp cuối cùng, với hai hướng như sau:
+    Vậy tại sao ta không dùng một hàm số phức tạp/*"có ý nghĩa"* hơn cho lớp cuối của mô hình? Lý do các hàm *logistic* hay *softmax* được chọn là: Khi áp dụng các phương pháp tối ưu cho mạng neuron, với lượng dữ liệu lớn, một chiến thuật hay được sử dụng là huấn luyện theo từng batch nhỏ, và việc tính sai số đối với các hàm số kể trên nhìn chung là đơn giản. Như đề xuất của Colah, một ý tưởng tự nhiên là: Thay vì sử dụng các hàm số kể trên, ta có thể sử dụng phương pháp **k-nearest neighbors** (*kNN*) ở lớp cuối cùng, với hai hướng như sau:
 
     - **Sử dụng ở _"test time"_**: Nghĩa là vẫn huấn luyện mạng neuron bằng layer cuối là các hàm *logistic* và *softmax*, **sử dụng toàn bộ representation học được** cho đến trước lớp cuối cùng rồi **đưa ra dự đoán bằng kNN**. Cách này nhìn chung có làm giảm sai số của mô hình thêm 0.1-0.2% ở một số bộ dữ liệu, nhưng vẫn không quá đáng kể.
 
