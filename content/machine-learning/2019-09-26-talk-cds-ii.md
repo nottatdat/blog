@@ -10,45 +10,45 @@ Xem phần trước tại [đây](https://tatd.at/machine-learning/2019-09-25-ta
 
 ---
 
-**Trang 14**: Cuối cùng thì một **Deep Neural Networks** (DNN) là gì?
+**Trang 14**: Cuối cùng thì một **Deep Neural Networks** (*DNN*) là gì?
 
-Về mặt bản chất toán học thì các (Feed-forward) DNN nói chung thực ra rất *"đơn giản"*: Chúng là hàm hợp của một số các hàm *"cơ bản"* khác *"xếp chồng"* lên nhau. Các hàm đó có thể đơn giản như hàm **identity** `$ f(x) = x $`, hàm **linear** `$ f(x) = ax + b $`, hàm **ReLU** `$ f(x) = max(x, 0) $`, hoặc phức tạp một chút như hàm **`$ tanh(x) $`**, hay hàm **[sigmoid](https://en.wikipedia.org/wiki/Sigmoid_function)** `$ f(x) = \frac{e^x}{1 + e^x} $`. Tuy từng hàm, từng neuron, từng layer là *"đơn giản"*, nhưng khi kết hợp lại với nhau thì lại rất *"hữu hiệu"*, chính là do định lý dưới đây:
+Về mặt bản chất toán học thì các *(Feed-forward) DNN* nói chung thực ra rất *"đơn giản"*: Chúng là hàm hợp của một số các hàm *"cơ bản"* khác, như hàm **identity** `$ f(x) = x $`, hàm **linear** `$ f(x) = ax + b $`, hàm **ReLU** `$ f(x) = max(x, 0) $`, hoặc phức tạp một chút như hàm **`$ tanh(x) $`**, hay hàm **[sigmoid](https://en.wikipedia.org/wiki/Sigmoid_function)** `$ f(x) = \frac{e^x}{1 + e^x} $`. Tuy từng hàm, từng neuron, từng layer là *"đơn giản"*, nhưng khi kết hợp lại với nhau thì lại rất *"hữu hiệu"*, chính là do định lý dưới đây:
 
 > **Định lý xấp xỉ phổ quát** (*Universal Approximation Theorem*): Bất kỳ một *hàm số thực* liên tục trên tập [compact](https://en.wikipedia.org/wiki/Compact_space), đều có thể được xấp xỉ bằng một *Feed-forward DNN* một lớp với *hữu hạn* số neuron, nếu **"hàm kích hoạt"**, *activation function*, đảm bảo được các điều kiện sau trên tập xác định: (1) *bị chặn*, (2) *liên tục*, (3) *đơn điệu tăng*.
 
-Ý nghĩa của định lý này là: Với một hàm liên tục trên tập *compact* cho trước, sẽ tồn tại một DNN với chỉ một lớp, có thể xấp xỉ được hàm này, bất kể hàm cho trước đó phức tạp như thế nào. Nên nhớ rằng đây chỉ là *existence/non-constructive theorem*, nghĩa là **ta biết được rằng nó tồn tại**, nhưng định lý **không chỉ ra cách xây dựng nó như thế nào**. Một số kết quả cải tiến hơn cũng [*chứng minh được rằng*](https://arxiv.org/abs/1708.02691): Với mọi hàm số thực `$ n $` chiều liên tục trên tập *compact*, luôn tồn tại một DNN có một lớp, với `$ n + 3 $` ReLU nodes/neurons, có thể xấp xỉ được hàm đã cho.
+Ý nghĩa của định lý này là: Với một hàm liên tục trên tập *compact* cho trước, sẽ tồn tại một *DNN* với chỉ một lớp, có thể xấp xỉ được hàm này, bất kể hàm cho trước đó phức tạp như thế nào. Nên nhớ rằng đây chỉ là *existence/non-constructive theorem*, nghĩa là **ta biết được rằng nó tồn tại**, nhưng định lý **không chỉ ra cách xây dựng nó như thế nào**. Một số kết quả cải tiến hơn cũng [*chứng minh được rằng*](https://arxiv.org/abs/1708.02691): Với mọi hàm số thực `$ n $` chiều liên tục trên tập *compact*, luôn tồn tại một *DNN* có một lớp, với `$ n + 3 $` ReLU nodes/neurons, có thể xấp xỉ được hàm đã cho.
 
-Tất cả chỉ là.. lý thuyết. Việc tồn tại một DNN như thế **không đảm bảo rằng ta có thể train được** một DNN có thể *"hội tụ"* về DNN tối ưu đó. Các kết quả thực nghiệm khuyến khích việc **sử dụng các network nhiều lớp**, thậm chí số lớp có thể lên đến hàng ngàn. *["Stack more layers"](https://i.redd.it/n9fgba8b0qr01.png)* vì thế cũng trở thành meme trong ngành.
+Tất cả chỉ là.. lý thuyết. Việc tồn tại một *DNN* như thế **không đảm bảo rằng ta có thể train được** một *DNN* có thể *"hội tụ"* về *DNN* tối ưu đó. Các kết quả thực nghiệm khuyến khích việc **sử dụng các network nhiều lớp**, thậm chí số lớp có thể lên đến hàng ngàn. *["Stack more layers"](https://i.redd.it/n9fgba8b0qr01.png)* vì thế cũng trở thành meme trong ngành.
 
 ---
 
-**Trang 15**: Tóm lại thì DNN, mà nói rộng ra hơn là *Deep learning*, là một công cụ rất mạnh và hữu hiệu để xấp xỉ những hàm số phức tạp. *Hàm số* ở đây nói theo nghĩa phổ quát, như:
+**Trang 15**: Tóm lại thì *DNN*, mà nói rộng ra hơn là **Deep learning**, là một công cụ rất mạnh và hữu hiệu để xấp xỉ những hàm số phức tạp. *Hàm số* ở đây nói theo nghĩa phổ quát, như:
 
 - *Dữ liệu đầu vào* là hình ảnh và *đầu ra* là 1 hoặc 0, lần lượt chỉ việc trong ảnh có con chó hay con mèo, là một *hàm số*.
 
 - *Dữ liệu đầu vào* là lịch sử mua sắm của tất cả người dùng trên một platform, *đầu ra* là món hàng mà người dùng X bất kỳ muốn mua, là một *hàm số*.
 
-Trong ngôn ngữ Machine learning thì **hàm số đồng nghĩa với mô hình**. Và *Deep learning* là một công cụ rất mạnh để tạo ra các mô hình. Một câu hỏi tự nhiên được đặt ra là: Nếu *Deep learning* mạnh như vậy, thì còn chờ gì mà không áp dụng nó vào mọi mô hình?
+Trong ngôn ngữ *Machine learning* thì **hàm số đồng nghĩa với mô hình**. Và *Deep learning* là một công cụ rất mạnh để tạo ra các mô hình. Một câu hỏi tự nhiên được đặt ra là: Nếu *Deep learning* mạnh như vậy, thì còn chờ gì mà không áp dụng nó vào mọi mô hình?
 
-> **Song đề Bias-Variance** (*Bias-Variance tradeoff*): Hai "nguồn" **sai số**, *error*, của một mô hình đến từ **bias** của mô hình, tức mô hình quá đơn giản và đưa ra quá nhiều giả định về dữ liệu, dẫn đến *"underfitting"*, hoặc **variance**, tức mô hình quá phức tạp, nên nhạy cảm với những sự thay đổi nhỏ từ dữ liệu, vốn luôn có nhiễu, dẫn đến *"overfitting"*.
+> **Song đề Bias-Variance** (*Bias-Variance tradeoff*): Hai *"nguồn"* **sai số**, *error*, của một mô hình đến từ **bias** của mô hình, tức mô hình quá đơn giản và đưa ra quá nhiều giả định về dữ liệu, dẫn đến *"underfitting"*, hoặc **variance**, tức mô hình quá phức tạp, nên nhạy cảm với những sự thay đổi nhỏ từ dữ liệu, vốn luôn có nhiễu, dẫn đến *"overfitting"*.
 
-*Deep learning* thuộc lớp mô hình có **variance cao**, do hàm số mà một mô hình *Deep learning* học được có thể rất phức tạp. Trong Machine learning cổ điển, hiện tượng *"overfitting"* *thường* đến từ việc người sử dụng không hiểu hết mô hình của mình, với một số lỗi căn bản thường gặp của các "tay mơ" khi training như:
+*Deep learning* thuộc lớp mô hình có **variance cao**, do hàm số mà một mô hình *Deep learning* học được có thể rất phức tạp. Trong *Machine learning cổ điển*, hiện tượng *"overfitting"* *thường* đến từ việc người sử dụng không hiểu hết mô hình của mình, với một số lỗi căn bản thường gặp của các "tay mơ" khi training như:
 
 - Sử dụng đa thức bậc cao, gần `$ n $`, để xấp xỉ hàm số cho `$ n $` điểm trong không gian 2 chiều
 
-- Dùng mô hình **k-nearest neighbor** với `$ k = 0, 1 $`
+- Dùng mô hình **k-nearest neighbor** (*kNN*) với `$ k = 0, 1 $`
 
 Các lỗi này thuộc dạng rất *"silly"* của những người mới bắt đầu học. Do phần lớn các mô hình *Machine learning cổ điển* thường yêu cầu một sự hiểu biết nhất định vào dữ liệu mà mình có, nên việc *"overfitting"* trong *Machine learning cổ điển* nhìn chung thường *"ít"* hơn trong *Deep learning*.
 
-Trong *Deep learning* thì *"overfitting"* là hiện tượng chung, là thứ gần như không thể tránh khỏi khi làm việc với *Feed-forward DNN* cũng như các dạng nâng cao khác của nó như *Convolutional Neural Network* (CNN) hay *Recurrent Neural Network* (RNN). Việc có *"overfitting"* trong mô hình *Deep learning* không đến từ sự thiếu hiểu biết của người làm mô hình, mà gần như thuộc về bản chất của mô hình.
+Trong *Deep learning* thì *"overfitting"* là hiện tượng chung, là thứ gần như không thể tránh khỏi khi làm việc với *Feed-forward DNN* cũng như các dạng nâng cao khác của nó như **Convolutional Neural Network** (*CNN*) hay **Recurrent Neural Network** (*RNN*). Việc có *"overfitting"* trong mô hình *Deep learning* không đến từ sự thiếu hiểu biết của người làm mô hình, mà gần như thuộc về bản chất của mô hình.
 
 ---
 
-**Update 09/2019**: Mới đây có môt [bài báo](https://arxiv.org/abs/1812.11118) rất thú vị, nội dung là xét lại **Song đề Bias-Variance**. Thực nghiệm trong *Deep learning* cho thấy, như đã nói ở trên, các mô hình có nhiều lớp, thậm chí cả ngàn lớp, thường cho kết quả tốt hơn các mô hình *"shallow"*:
+**Update 09/2019**: Mới đây có môt [bài báo](https://arxiv.org/abs/1812.11118) rất thú vị, nội dung là xét lại **Song đề Bias-Variance**. Thực nghiệm trong *Deep learning* cho thấy các mô hình có nhiều lớp, thậm chí cả ngàn lớp, thường cho kết quả tốt hơn các mô hình *"shallow"*:
 
 -  Theo lý thuyết cổ điển, việc tăng độ phức tạp của mô hình sẽ chỉ giúp mô hình cải thiện lúc "ban đầu": Nghĩa là sẽ tồn tại một thời điểm, tạm gọi là **"cut-off point"**, mà khi đó, nếu nâng độ phức tạp hiện tại của mô hình, thì mô hình sẽ không cải thiện được nữa, thậm chí còn cho kết quả tệ hơn (*classic U-shaped test error curve*).
 
-- [Bài báo này](https://arxiv.org/abs/1812.11118) đã cho thấy, *bằng thực nghiệm*, rằng đây *chỉ là một phần của vấn đề*: Nếu cứ tiếp tục tăng độ phức tạp lên mãi, thì sau một thời gian, mô hình sẽ lại tiếp tục cải thiện, và sẽ cho kết quả tốt hơn tại điểm **"cut-off point"** được nói ở trên.
+- [Bài báo này](https://arxiv.org/abs/1812.11118) đã cho thấy, *bằng thực nghiệm*, rằng đây *chỉ là một phần của vấn đề*: Nếu *tiếp tục tăng độ phức tạp lên mãi*, thì sau một thời gian, mô hình sẽ lại tiếp tục cải thiện, và sẽ cho kết quả tốt hơn tại điểm **"cut-off point"** được nói ở trên.
 
 <img src="https://i.imgur.com/gfmxyq4.png" style="width:700px;"/>
 
@@ -90,11 +90,11 @@ Bài viết của Colah cho ta thêm nhiều insights hơn về câu hỏi *"Vì
 
 Tuy nhiên, vấn đề cũng đến từ đây: Việc sử dụng một layer cuối *khá đơn giản* như *logistic* hay *softmax*, dẫn đến việc **rất dễ thay đổi kết quả của mô hình**, nếu như ta có thể *chỉnh sửa được dữ liệu đầu vào*. Tức là với các điểm dự đoán nằm gần *decision boundary*, ta sẽ có cách thay đổi dữ liệu đầu vào, sao cho về mặt ý nghĩa thì bản chất của dữ liệu không thay đổi, như trong hình chú gấu trúc, mà lại có thể làm "xê dịch" dự đoán mới sang một *decision region* khác, hoặc *"cực đoan"* hơn, như trong bài báo mới đây, chỉ cần *thay đổi 1 pixel duy nhất*.
 
-Vậy tại sao ta không dùng một hàm số phức tạp/*"có ý nghĩa"* hơn cho lớp cuối của mô hình? Lý do các hàm *logistic* hay *softmax* được chọn là: Khi áp dụng các phương pháp tối ưu cho mạng neuron, với lượng dữ liệu lớn, một chiến thuật hay được sử dụng là huấn luyện theo từng batch nhỏ, và việc tính sai số đối với các hàm số kể trên nhìn chung là đơn giản. Như đề xuất của Colah, một ý tưởng tự nhiên là: Thay vì sử dụng các hàm số kể trên, ta có thể sử dụng phương pháp **k-nearest neighbors** (*kNN*) ở lớp cuối cùng, với hai hướng như sau:
+Vậy tại sao ta không dùng một hàm số phức tạp/*"có ý nghĩa"* hơn cho lớp cuối của mô hình? Lý do các hàm *logistic* hay *softmax* được chọn là: Khi áp dụng các phương pháp tối ưu cho mạng neuron, với lượng dữ liệu lớn, một chiến thuật hay được sử dụng là huấn luyện theo từng batch nhỏ, và việc tính sai số đối với các hàm số kể trên nhìn chung là đơn giản. Như đề xuất của Colah, một ý tưởng tự nhiên là: Thay vì sử dụng các hàm số kể trên, ta có thể sử dụng thuật toán *kNN* ở lớp cuối cùng, với hai hướng như sau:
 
-- **Sử dụng ở _"test time"_**: Nghĩa là vẫn huấn luyện mạng neuron bằng layer cuối là các hàm *logistic* và *softmax*, **sử dụng toàn bộ representation học được** cho đến trước lớp cuối cùng rồi **đưa ra dự đoán bằng kNN**. Cách này nhìn chung có làm giảm sai số của mô hình thêm 0.1-0.2% ở một số bộ dữ liệu, nhưng vẫn không quá đáng kể.
+- **Sử dụng ở _"test time"_**: Nghĩa là vẫn huấn luyện mạng neuron bằng layer cuối là các hàm *logistic* và *softmax*, **sử dụng toàn bộ representation học được** cho đến trước lớp cuối cùng rồi **đưa ra dự đoán bằng _kNN_**. Cách này nhìn chung có làm giảm sai số của mô hình thêm 0.1-0.2% ở một số bộ dữ liệu, nhưng vẫn không quá đáng kể.
 
-- **Sử dụng trong lúc huấn luyện**: Trong cách trên, mô hình *"vẫn"* tối ưu mạng sao cho các tập dữ liệu *"tách biệt tuyến tính"*. Việc *"đòi hỏi"* mô hình phải làm như vậy, theo Colah, là không hợp lý lắm. Điểm khó khăn của việc sử dụng thuật toán kNN cho lớp cuối cùng là: **Tính lỗi như thế nào?** Nếu mỗi batch huấn luyện phải dùng toàn bộ dữ liệu, thì chi phí tính toán lại quá cao. Colah có thử nhiều kiến trúc khác nhau, trong đó cố gắng vừa hạn chế được việc phải dùng hoàn toàn bộ dữ liệu cho mỗi batch, vừa đưa ra được một cách tính sai số khả dĩ cho từng batch, nhưng.. lại không có được kết quả tốt.
+- **Sử dụng trong lúc huấn luyện**: Trong cách trên, mô hình *"vẫn"* tối ưu mạng sao cho các tập dữ liệu *"tách biệt tuyến tính"*. Việc *"đòi hỏi"* mô hình phải làm như vậy, theo Colah, là không hợp lý lắm. Điểm khó khăn của việc sử dụng thuật toán *kNN* cho lớp cuối cùng là: **Tính lỗi như thế nào?** Nếu mỗi batch huấn luyện phải dùng toàn bộ dữ liệu, thì chi phí tính toán lại quá cao. Colah có thử nhiều kiến trúc khác nhau, trong đó cố gắng vừa hạn chế được việc phải dùng hoàn toàn bộ dữ liệu cho mỗi batch, vừa đưa ra được một cách tính sai số khả dĩ cho từng batch, nhưng.. lại không có được kết quả tốt.
 
 ---
 
@@ -136,11 +136,11 @@ Vậy tại sao ta không dùng một hàm số phức tạp/*"có ý nghĩa"* h
 
 **Trang 21 - 23**: Lại trở về với cuộc thi của [numer.ai](numer.ai).
 
-Nói một chút về việc sử dụng *Regularization* trong mô hình *Deep learning* của mình ở cuộc thi của [numer.ai](numer.ai). Các phương pháp như *L1/L2 regularizations*, *Dropouts* nhìn chung hoạt động tốt, trong khi những phương pháp đòi hỏi việc thêm *"nhiễu"* vào dữ liệu thì lại không hoạt động tốt. Điều này thật ra cũng.. dễ hiểu, bởi bản thân dữ liệu đã được áp thêm một lớp mã hoá, và bản thân của dữ liệu được trích từ thị trường chứng khoán, vốn đã nhiều nhiễu hơn là tín hiệu, thì việc thêm vào một lớp nhiễu nữa là *hại nhiều hơn lợi*.
+Nói một chút về việc sử dụng *Regularization* trong mô hình *Deep learning* của mình ở cuộc thi của [numer.ai](numer.ai). Các phương pháp như *L1/L2 regularizations*, *Dropouts* nhìn chung hoạt động tốt, trong khi những phương pháp đòi hỏi việc thêm *"nhiễu"* vào dữ liệu thì lại không hoạt động tốt. Điều này thật ra cũng.. *dễ hiểu*, bởi bản thân dữ liệu đã được áp thêm một lớp mã hoá, và do bản thân của dữ liệu được trích từ thị trường chứng khoán, *vốn đã nhiều nhiễu hơn thông tin*, thì việc thêm vào một lớp nhiễu nữa là *hại nhiều hơn lợi*.
 
 Nghĩ lại về các phương pháp *Regularization* hiện tại thì thấy: Phần lớn các phương pháp *augmentation* trong *Regularization* thường tìm cách thêm *"nhiễu"* vào hoặc là dữ liệu đầu vào (như *Data augmentation*), hoặc thêm nhiễu vào dự đoán (như *Test-time augmentation*). Hay như trong *Reinforcement learning*, một phần quan trọng của thuật toán *(Deep) Q-learning* là thêm *"nhiễu"* vào hành động, tức lớp cuối cùng của mô hình.
 
-Một ý tưởng tự nhiên đến là: **Thêm nhiễu vào mô hình**, thay vì các lớp đầu và cuối, mà cụ thể ở đây là trọng số của các neuron trong mạng neuron. Ý tưởng này đem đến cho mình một trong những mô hình tốt nhất khi dự cuộc thi của [numer.ai](numer.ai), đó là sử dụng một mạng *"shallow"* với **2 lớp ẩn**, và *"thô thiển"* **thêm nhiễu dạng Gaussian vào các trọng số của neuron**.
+Một ý tưởng tự nhiên đến là: **Thêm nhiễu vào chính mô hình**, thay vì các lớp đầu và cuối, mà cụ thể ở đây là trọng số của các neuron trong mạng neuron. Ý tưởng này đem đến cho mình một trong những mô hình tốt nhất khi dự cuộc thi của [numer.ai](numer.ai), đó là sử dụng một mạng *"shallow"* với **2 lớp ẩn**, và *"thô thiển"* **thêm nhiễu dạng Gaussian vào các trọng số của neuron**.
 
 ---
 
@@ -159,15 +159,15 @@ Thay vì thêm *"nhiễu"* một cách *"thô thiển"* với biên độ bằng
 
 Video [này](https://www.youtube.com/watch?v=DW1AuOC9TQc) có cho thấy sự khác biệt rõ rệt của việc sử dụng phương pháp này, đặc biệt là trong môi trường [Walker2D](https://gym.openai.com/envs/Walker2d-v2/):
 
-- *"Agent"* khi không sử dụng phương pháp thì cố gắng tiến về phía trước *"bằng mọi giá"*, mà không quan tâm đến *"ý nghĩa"* của hành động của mình, khi dùng phần *"đầu"* và *"chi trước"* để di chuyển về phía trước.
+- *"Agent"* ban đầu chỉ cố gắng tiến về phía trước *"bằng mọi giá"*, mà không quan tâm đến *"ý nghĩa"* của hành động của mình, khi dùng phần *"đầu"* và *"chi trước"* để di chuyển về phía trước.
 
-- Còn khi được huấn luyện với phương pháp này, *"agent"* có hướng tiếp cận "hợp lý" hơn, cụ thể là bằng việc di chuyển bằng cả hai *"chi"* mà không sử dụng phần *"đầu"*, và hiệu quả hơn. *"Agent"* cũng học được cách *"búng chân"*, để có thể di chuyển nhanh hơn về phía trước.
+- Còn khi được huấn luyện với phương pháp này, *"agent"* có hướng tiếp cận *"hợp lý"* hơn, cụ thể là bằng việc di chuyển bằng cả hai *"chi"* mà không sử dụng phần *"đầu"*, và hiệu quả hơn. *"Agent"* cũng học được cách *"búng chân"*, để có thể di chuyển nhanh hơn về phía trước.
 
 ---
 
 **Trang 27 - 29**:
 
-Dĩ nhiên là *[OpenAI](https://openai.com/)* cũng không chứng minh được, một cách chặt chẽ về mặt toán học, vì sao phương pháp này lại hiệu quả hơn. Nói một cách vĩ mô thì *"landscape"* hiện tại của *Deep learning* không được xây dựng vững chãi bằng các lý thuyết toán học đồ sộ. Ta không chắc rằng một mô hình *Deep learning* mà ta đang huấn luyện sẽ cho kết quả *"tối ưu"* (*global optima*), *"đủ tốt"*, hay có sai số bao nhiêu với các kết quả *"tối ưu"/"đủ tốt"*.
+Dĩ nhiên là *[OpenAI](https://openai.com/)* cũng không chứng minh được, một cách chặt chẽ về mặt toán học, vì sao phương pháp này lại hiệu quả hơn. Nói một cách vĩ mô thì *"landscape"* hiện tại của *Deep learning* không được xây dựng vững chãi bằng các lý thuyết toán học đồ sộ. Ta không chắc rằng một mô hình *Deep learning* mà ta đang huấn luyện sẽ cho kết quả *"tối ưu"* (*global optima*), *"đủ tốt"*, hay có *"sai số"* bao nhiêu với các kết quả *"tối ưu"/"đủ tốt"*.
 
 Cuối cùng thì, như George Box nói: *"Essentially, all models are wrong, but some are useful"*. *Deep learning* hiện tại thật ra gần với một ngành kỹ thuật, hay khoa học thực nghiệm, hơn là khoa học chính xác.
 
