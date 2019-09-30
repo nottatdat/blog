@@ -12,11 +12,11 @@ Xem phần trước tại [đây](https://tatd.at/machine-learning/2019-09-25-ta
 
 **Trang 14**: Cuối cùng thì một **Deep Neural Networks** (*DNN*) là gì?
 
-Về mặt bản chất toán học thì các *(Feed-forward) DNN* nói chung thực ra rất *"đơn giản"*: Chúng là hàm hợp của một số các hàm *"cơ bản"* khác, như hàm **identity** `$ f(x) = x $`, hàm **linear** `$ f(x) = ax + b $`, hàm **ReLU** `$ f(x) = max(x, 0) $`, hoặc phức tạp một chút như hàm **`$ tanh(x) $`**, hay hàm **[sigmoid](https://en.wikipedia.org/wiki/Sigmoid_function)** `$ f(x) = \frac{e^x}{1 + e^x} $`. Tuy từng hàm, từng neuron, từng layer là *"đơn giản"*, nhưng khi kết hợp lại với nhau thì lại rất *"hữu hiệu"*, chính là do định lý dưới đây:
+Về mặt bản chất toán học thì các *(Feed-forward) DNN* nói chung thực ra rất *"đơn giản"*: Chúng là hàm hợp của một số các hàm *"cơ bản"* khác, như hàm **identity** `$ f(x) = x $`, hàm **linear** `$ f(x) = ax + b $`, hàm **ReLU** `$ f(x) = max(x, 0) $`, hoặc phức tạp một chút như hàm **`$ tanh(x) $`**, hay hàm **[sigmoid](https://en.wikipedia.org/wiki/Sigmoid_function)** `$ f(x) = \frac{e^x}{1 + e^x} $`. Tuy từng hàm, từng *"neuron"*, từng layer là *"đơn giản"*, nhưng khi kết hợp lại với nhau thì lại rất *"hữu hiệu"*, chính là do định lý dưới đây:
 
-> **Định lý xấp xỉ phổ quát** (*Universal Approximation Theorem*): Bất kỳ một *hàm số thực* liên tục trên tập [compact](https://en.wikipedia.org/wiki/Compact_space), đều có thể được xấp xỉ bằng một *Feed-forward DNN* một lớp với *hữu hạn* số neuron, nếu *"hàm kích hoạt"*, *activation function*, đảm bảo được các điều kiện sau trên tập xác định: (1) *bị chặn*, (2) *liên tục*, (3) *đơn điệu tăng*.
+> **Định lý xấp xỉ phổ quát** (*Universal Approximation Theorem*): Bất kỳ một *hàm số thực* liên tục trên tập [compact](https://en.wikipedia.org/wiki/Compact_space), đều có thể được xấp xỉ bằng một *Feed-forward DNN* một lớp với *hữu hạn* số *"neuron"*, nếu *"hàm kích hoạt"*, *activation function*, đảm bảo được các điều kiện sau trên tập xác định: (1) *bị chặn*, (2) *liên tục*, (3) *đơn điệu tăng*.
 
-Ý nghĩa của định lý này là: Với một hàm liên tục trên tập *compact* cho trước, sẽ tồn tại một *DNN* với chỉ một lớp, có thể xấp xỉ được hàm này, bất kể hàm cho trước đó phức tạp như thế nào. Nên nhớ rằng đây chỉ là *existence/non-constructive theorem*, nghĩa là **ta biết được rằng nó tồn tại**, nhưng định lý **không chỉ ra cách xây dựng nó như thế nào**. Một số kết quả cải tiến hơn cũng [*chứng minh được rằng*](https://arxiv.org/abs/1708.02691): Với mọi hàm số thực `$ n $` chiều liên tục trên tập *compact*, luôn tồn tại một *DNN* có một lớp, với `$ n + 3 $` ReLU nodes/neurons, có thể xấp xỉ được hàm đã cho.
+Ý nghĩa của định lý này là: Với một hàm liên tục trên tập *compact* cho trước, sẽ tồn tại một *DNN* với chỉ một lớp, có thể xấp xỉ được hàm này, bất kể hàm cho trước đó phức tạp như thế nào. Nên nhớ rằng đây chỉ là *existence/non-constructive theorem*, nghĩa là **ta biết được rằng nó tồn tại**, nhưng định lý **không chỉ ra cách xây dựng nó như thế nào**. Một số kết quả cải tiến hơn cũng [*chứng minh được rằng*](https://arxiv.org/abs/1708.02691): Với mọi hàm số thực `$ n $` chiều liên tục trên tập *compact*, luôn tồn tại một *DNN* có một lớp, với `$ n + 3 $` ReLU *"neuron"*, có thể xấp xỉ được hàm đã cho.
 
 Tất cả chỉ là.. lý thuyết. Việc tồn tại một *DNN* như thế **không đảm bảo rằng ta có thể train được** một *DNN* có thể *"hội tụ"* về *DNN* tối ưu đó. Các kết quả thực nghiệm khuyến khích việc **sử dụng các network nhiều lớp**, thậm chí số lớp có thể lên đến hàng ngàn. *["Stack more layers"](https://i.redd.it/n9fgba8b0qr01.png)* vì thế cũng trở thành meme trong ngành.
 
@@ -60,7 +60,7 @@ Trong *Deep learning* thì *"overfitting"* là hiện tượng chung, là thứ 
 
 ---
 
-**Trang 16 - 17**: Ví dụ kinh điển dưới đây của Ian Goodfellow và các đồng nghiệp đã cho thấy sự *"nghiêm trọng"* của vấn đề *"overfitting"* trong mạng neuron như thế nào:
+**Trang 16 - 17**: Ví dụ kinh điển dưới đây của Ian Goodfellow và các đồng nghiệp đã cho thấy sự *"nghiêm trọng"* của vấn đề *"overfitting"* trong *"mạng neuron"* như thế nào:
 
 <img src="https://i.imgur.com/3wZGiYP.png" style="width:700px;"/>
 
@@ -80,35 +80,35 @@ Gần đây hơn, một [bài báo](https://arxiv.org/abs/1710.08864) khác đã
 
 **Trang 18**: Ảnh và ý tưởng cho phần này được lấy từ bài viết **[Neural Networks, Manifolds, and Topology](https://colah.github.io/posts/2014-03-NN-Manifolds-Topology/)** của Christopher Colah.
 
-Để hiểu được vì sao *Deep learning* dễ *"overfitting"* như vậy, ta phải hiểu được việc huấn luyện một mạng neuron diễn ra như thế nào. Dưới đây là hai ví dụ đơn giản, giúp ta nhìn thấy (một phần) trong bức tranh tổng thể của việc huấn luyện một mạng neuron.
+Để hiểu được vì sao *Deep learning* dễ *"overfitting"* như vậy, ta phải hiểu được việc huấn luyện một *"mạng neuron"* diễn ra như thế nào. Dưới đây là hai ví dụ đơn giản, giúp ta nhìn thấy (một phần) trong bức tranh tổng thể của việc huấn luyện một *"mạng neuron"*.
 
 <img src="https://colah.github.io/posts/2014-03-NN-Manifolds-Topology/img/spiral.1-2.2-2-2-2-2-2.gif" style="width:350px;"/> <img src="https://colah.github.io/posts/2014-03-NN-Manifolds-Topology/img/topology_1D-2D_train.gif" style="width:350px;"/>
 
 Một cách *"vĩ mô"*, điểm mấu chốt trong quá trình huấn luyện là: Các phương pháp tối ưu sẽ cố gắng tìm một *"đa tạp"*, *manifold*, mà nói rộng ra hơn là học một *"biểu diễn"*, *representation*, sao cho *"biểu diễn"* học được ở lớp mới có thể giúp mô hình dễ dàng đưa ra dự đoán nhất. Như trong hai ví dụ trên, do lớp cuối cùng trong mô hình là một lớp có dạng *"logistic regression"*, mô hình sẽ "cố gắng" làm cho hai tập được *"tách biệt tuyến tính"*, *linear separable*, nghĩa là làm cho hai tập *dễ được tách biệt bằng một siêu phẳng* trong không gian đa chiều.
 
-Bài viết của Colah cho ta thêm nhiều insights hơn về câu hỏi *"Vì sao điều này lại đúng?"*, cũng như phác thảo một chứng minh thô sơ cho nhận định trên. Nói như *Herbert Simon* thì: **"Solving a problem simply means representing it so as to make the solution transparent"**.
+Bài viết của Colah cho ta thêm nhiều insights hơn về câu hỏi *"Vì sao điều này lại đúng?"*, cũng như phác thảo một chứng minh thô sơ cho nhận định trên. Nói như *Herbert Simon* thì: *"Solving a problem simply means representing it so as to make the solution transparent"*.
 
 Tuy nhiên, vấn đề cũng đến từ đây: Việc sử dụng một layer cuối *khá đơn giản* như *logistic* hay *softmax*, dẫn đến việc **rất dễ thay đổi kết quả của mô hình**, nếu như ta có thể *chỉnh sửa được dữ liệu đầu vào*. Tức là với các điểm dự đoán nằm gần *decision boundary*, ta sẽ có cách thay đổi dữ liệu đầu vào, sao cho về mặt ý nghĩa thì bản chất của dữ liệu không thay đổi, như trong hình chú gấu trúc, mà lại có thể làm "xê dịch" dự đoán mới sang một *decision region* khác, hoặc *"cực đoan"* hơn, như trong bài báo mới đây, chỉ cần *thay đổi 1 pixel duy nhất*.
 
-Vậy tại sao ta không dùng một hàm số phức tạp/*"có ý nghĩa"* hơn cho lớp cuối của mô hình? Lý do các hàm *logistic* hay *softmax* được chọn là: Khi áp dụng các phương pháp tối ưu cho mạng neuron, với lượng dữ liệu lớn, một chiến thuật hay được sử dụng là huấn luyện theo từng batch nhỏ, và việc tính sai số đối với các hàm số kể trên nhìn chung là đơn giản. Như đề xuất của Colah, một ý tưởng tự nhiên là: Thay vì sử dụng các hàm số kể trên, ta có thể sử dụng thuật toán *kNN* ở lớp cuối cùng, với hai hướng như sau:
+Vậy tại sao ta không dùng một hàm số phức tạp/*"có ý nghĩa"* hơn cho lớp cuối của mô hình? Lý do các hàm *logistic* hay *softmax* được chọn là: Khi áp dụng các phương pháp tối ưu cho *"mạng neuron"*, với lượng dữ liệu lớn, một chiến thuật hay được sử dụng là huấn luyện theo từng *"batch"* nhỏ, và việc tính sai số đối với các hàm số kể trên nhìn chung là đơn giản. Như đề xuất của Colah, một ý tưởng tự nhiên là: Thay vì sử dụng các hàm số kể trên, ta có thể sử dụng thuật toán *kNN* ở lớp cuối cùng, với hai hướng như sau:
 
-- **Sử dụng ở _"test time"_**: Nghĩa là vẫn huấn luyện mạng neuron bằng layer cuối là các hàm *logistic* và *softmax*, **sử dụng toàn bộ representation học được** cho đến trước lớp cuối cùng rồi **đưa ra dự đoán bằng _kNN_**. Cách này nhìn chung có làm giảm sai số của mô hình thêm 0.1-0.2% ở một số bộ dữ liệu, nhưng vẫn không quá đáng kể.
+- **Sử dụng ở _"test time"_**: Nghĩa là vẫn huấn luyện *"mạng neuron"* bằng layer cuối là các hàm *logistic* và *softmax*, *sử dụng toàn bộ representation học được* cho đến trước lớp cuối cùng rồi **đưa ra dự đoán bằng _kNN_**. Cách này nhìn chung có làm giảm sai số của mô hình thêm 0.1-0.2% ở một số bộ dữ liệu, nhưng vẫn không quá đáng kể.
 
-- **Sử dụng trong lúc huấn luyện**: Trong cách trên, mô hình *"vẫn"* tối ưu mạng sao cho các tập dữ liệu *"tách biệt tuyến tính"*. Việc *"đòi hỏi"* mô hình phải làm như vậy, theo Colah, là không hợp lý lắm. Điểm khó khăn của việc sử dụng thuật toán *kNN* cho lớp cuối cùng là: **Tính lỗi như thế nào?** Nếu mỗi batch huấn luyện phải dùng toàn bộ dữ liệu, thì chi phí tính toán lại quá cao. Colah có thử nhiều kiến trúc khác nhau, trong đó cố gắng vừa hạn chế được việc phải dùng hoàn toàn bộ dữ liệu cho mỗi batch, vừa đưa ra được một cách tính sai số khả dĩ cho từng batch, nhưng.. lại không có được kết quả tốt.
+- **Sử dụng trong lúc huấn luyện**: Trong cách trên, mô hình *"vẫn"* tối ưu mạng sao cho các tập dữ liệu *"tách biệt tuyến tính"*. Việc *"đòi hỏi"* mô hình phải làm như vậy, *theo Colah*, là không hợp lý lắm. Điểm khó khăn của việc sử dụng thuật toán *kNN* cho lớp cuối cùng là: **Tính lỗi như thế nào?** Nếu mỗi *"batch"* huấn luyện phải dùng toàn bộ dữ liệu, thì chi phí tính toán lại quá cao. Colah có thử nhiều kiến trúc khác nhau, trong đó cố gắng vừa hạn chế được việc phải dùng hoàn toàn bộ dữ liệu cho mỗi *"batch"*, vừa đưa ra được một cách tính sai số khả dĩ cho từng *"batch"*, nhưng.. lại không có được kết quả tốt.
 
 ---
 
-**Trang 19**: Nhìn chung, có các hướng *regularization*, là tên gọi chung cho các phương pháp giảm độ *"overfitting"* của mô hình, được chép trong sách vở như sau:
+**Trang 19**: Nhìn chung, có các hướng *regularization*, là tên gọi chung cho các phương pháp giảm độ *"overfitting"* của mô hình, như sau:
 
 1. Sử dụng **mô hình đơn giản hơn**. (Thanks Captain Obvious!)
 
-2. Sử dụng **L1 và L2 regularization**: Đây là hai phương pháp được sử dụng rất nhiều trong cả Machine learning cổ điển lẫn Deep learning. Tinh thần của phương pháp này là sẽ *"phạt"* các hệ số có giá trị lớn, bởi giá trị lớn của các hệ số *thường* **làm cho mô hình nhạy cảm hơn** với những thay đổi nhỏ của dữ liệu đầu vào.
+2. Sử dụng **L1 và L2 regularization**: Đây là hai phương pháp được sử dụng rất nhiều trong cả *Machine learning cổ điển* lẫn *Deep learning*. Tinh thần của phương pháp này là sẽ *"phạt"* các hệ số có giá trị lớn, bởi giá trị lớn của các hệ số *thường* **làm cho mô hình nhạy cảm hơn** với những thay đổi nhỏ của dữ liệu đầu vào.
 
 3. Sử dụng **Dropouts**: Đây được xem là một trong những phát kiến đã làm gã khổng lồ *Deep learning* tỉnh giấc, sau gần 20-30 năm *"AI winter"* (Geoffrey Hinton cùng các đồng sự viết bài báo về **[thuật toán "Lan truyền ngược"](https://www.nature.com/articles/323533a0)**, *Back-propagation*, từ năm 1986, mà ý tưởng về thuật toán này đã manh nha từ những năm 1960s; **[mô hình Long Short-Term Memory](https://www.researchgate.net/publication/13853244_Long_Short-term_Memory)** (LSTM) của Jürgen Schmidhuber và các đồng nghiệp được đề xuất từ năm 1997; Yann LeCun cho ra đời mạng **[LeNet](http://yann.lecun.com/exdb/lenet/)**, với kiến trúc CNN, vào năm 1998), dĩ nhiên là đi cùng với sự phát triển về độ lớn của dữ liệu và phần cứng máy tính. Phương pháp này được lần đầu tiên ứng dụng vào mô hình [AlexNet](https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf), là sự kết hợp của *"hàm kích hoạt"* **ReLU** và **Dropouts**, giúp một mô hình *Deep learning* giành chiến thắng tại một *cuộc thi ImageNet* sau khoảng một thập kỷ.
 
-    Phương pháp **Dropouts** có cách hoạt động như sau: Với mỗi một neuron ở một lớp có **Dropouts**, sẽ có một xác xuất `$ p $` cho việc "drop" đi neuron đó trong lần huấn luyện hiện tại, ie. đặt *"trọng số"* (*weight*) của neuron đó bằng 0, còn khi đưa ra dự đoán (*"inference phrase"*) thì sẽ sử dụng mạng được huấn luyện hoàn chỉnh (không có *Dropouts*).
+    Phương pháp **Dropouts** có cách hoạt động như sau: Với từng *"neuron"* ở các lớp có **Dropouts**, sẽ có một xác xuất `$ p $` cho việc *"drop"* đi *"neuron"* đó trong lần huấn luyện hiện tại, ie. đặt *"trọng số"* (*weight*) của *"neuron"* đó bằng 0, còn khi đưa ra dự đoán (*"inference phrase"*) thì sẽ sử dụng mạng được huấn luyện hoàn chỉnh (không có *Dropouts*).
 
-    Ý nghĩa của phương pháp này là: Với mỗi đợt huấn luyện, mô hình được học sẽ "như" một mạng neuron "mới", và mô hình cuối cùng sẽ tương đương với việc **"ensemble" vô số mạng neuron khác nhau**, với một niềm tin *có cơ sở* là chúng sẽ cho kết quả tốt hơn. Mặt khác, việc "làm khó" quá trình huấn luyện, bằng cách ngẫu nhiên đặt các hệ số bằng 0, cũng phần nào ép mạng neuron không dựa vào một nhóm nhỏ các neuron cụ thể nào, dẫn đến việc mạng neuron **khái quát hoá tốt hơn**, với các neuron **mang lại nhiều thông tin hơn**, lại tránh được các vấn đề kỹ thuật như *[exploding/vanishing gradients](https://www.bioinf.jku.at/publications/older/ch7.pdf)*.
+    Ý nghĩa của phương pháp này là: Với mỗi đợt huấn luyện, mô hình được học sẽ "như" một *"mạng neuron"* "mới", và mô hình cuối cùng sẽ tương đương với việc **"ensemble" vô số _"mạng neuron"_ khác nhau**, với một niềm tin *có cơ sở* là chúng sẽ cho kết quả tốt hơn. Mặt khác, việc *"làm khó"* quá trình huấn luyện, bằng cách ngẫu nhiên đặt các hệ số bằng 0, cũng phần nào ép *"mạng neuron"* không dựa vào một nhóm nhỏ các *"neuron"* cụ thể nào, dẫn đến việc *"mạng neuron"* **khái quát hoá tốt hơn**, với các *"neuron"* **mang lại nhiều thông tin hơn**, lại tránh được các vấn đề kỹ thuật như *[exploding/vanishing gradients](https://www.bioinf.jku.at/publications/older/ch7.pdf)*.
 
 ---
 
@@ -140,7 +140,7 @@ Nói một chút về việc sử dụng *Regularization* trong mô hình *Deep 
 
 Nghĩ lại về các phương pháp *Regularization* hiện tại thì thấy: Phần lớn các phương pháp *augmentation* trong *Regularization* thường tìm cách thêm *"nhiễu"* vào hoặc là dữ liệu đầu vào (như *Data augmentation*), hoặc thêm nhiễu vào dự đoán (như *Test-time augmentation*). Hay như trong *Reinforcement learning*, một phần quan trọng của thuật toán *(Deep) Q-learning* là thêm *"nhiễu"* vào hành động, tức lớp cuối cùng của mô hình.
 
-Một ý tưởng tự nhiên đến là: **Thêm nhiễu vào chính mô hình**, thay vì các lớp đầu và cuối, mà cụ thể ở đây là trọng số của các neuron trong mạng neuron. Ý tưởng này đem đến cho mình một trong những mô hình tốt nhất khi dự cuộc thi của [numer.ai](numer.ai), đó là sử dụng một mạng *"shallow"* với **2 lớp ẩn**, và *"thô thiển"* **thêm nhiễu dạng Gaussian vào các trọng số của neuron**.
+Một ý tưởng tự nhiên đến là: **Thêm nhiễu vào chính mô hình**, thay vì các lớp đầu và cuối, mà cụ thể ở đây là trọng số của các *"neuron"* trong *"mạng neuron"*. Ý tưởng này đem đến cho mình một trong những mô hình tốt nhất khi dự cuộc thi của [numer.ai](numer.ai), đó là sử dụng một mạng *"shallow"* với **2 lớp ẩn**, và *"thô thiển"* **thêm nhiễu dạng Gaussian vào các trọng số của neuron**.
 
 ---
 
@@ -155,7 +155,7 @@ Thật ra là không có.
 
 Khoảng một năm sau lúc mình sử dụng kỹ thuật đó trong cuộc thi của [numer.ai](numer.ai) thì *[OpenAI](https://openai.com/)* có công bố một [bài báo](https://arxiv.org/abs/1706.01905) chi tiết hơn về kỹ thuật này, với nhiều tìm kiếm rất thú vị!
 
-Thay vì thêm *"nhiễu"* một cách *"thô thiển"* với biên độ bằng nhau ở các lớp, *[OpenAI](https://openai.com/)* đề xuất một phương pháp thêm *"nhiễu"* khá thú vị, mà cũng rất tự nhiên: Ở các lớp đầu tiên thì biên độ của *"nhiễu"* được thêm vào mạnh hơn, và biên độ *"nhiễu"* sẽ giảm dần theo độ sâu của mạng. Sự thay đổi về biên độ này xuất phát từ việc: Ở một mạng neuron đủ *"sâu"*, các lớp khác nhau sẽ có sự *"nhạy cảm"* khác nhau với cùng một biên độ *"nhiễu"*. Không chỉ thế, *[OpenAI](https://openai.com/)* cũng đề xuất một cơ chế phức tạp, để từ *"sai số"* của mô hình mà có thể tinh chỉnh *"nhiễu"* ở từng lớp sao cho *"phù hợp"*.
+Thay vì thêm *"nhiễu"* một cách *"thô thiển"* với biên độ bằng nhau ở các lớp, *[OpenAI](https://openai.com/)* đề xuất một phương pháp thêm *"nhiễu"* khá thú vị, mà cũng rất tự nhiên: Ở các lớp đầu tiên thì biên độ của *"nhiễu"* được thêm vào mạnh hơn, và biên độ *"nhiễu"* sẽ giảm dần theo độ sâu của mạng. Sự thay đổi về biên độ này xuất phát từ việc: Ở một *"mạng neuron"* đủ *"sâu"*, các lớp khác nhau sẽ có sự *"nhạy cảm"* khác nhau với cùng một biên độ *"nhiễu"*. Không chỉ thế, *[OpenAI](https://openai.com/)* cũng đề xuất một cơ chế phức tạp, để từ *"sai số"* của mô hình mà có thể tinh chỉnh *"nhiễu"* ở từng lớp sao cho *"phù hợp"*.
 
 Video [này](https://www.youtube.com/watch?v=DW1AuOC9TQc) có cho thấy sự khác biệt rõ rệt của việc sử dụng phương pháp này, đặc biệt là trong môi trường [Walker2D](https://gym.openai.com/envs/Walker2d-v2/):
 
