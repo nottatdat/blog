@@ -2,7 +2,7 @@ baseURL = "https://tatd.at/"
 languageCode = "en-us"
 title = "dat"
 theme = "hugo-xmin"
-googleAnalytics = "UA-117499837-1"
+googleAnalytics = "UA-149261123-1"
 
 pygmentsUseClasses=true
 
